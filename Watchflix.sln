@@ -9,21 +9,25 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Api", "Api", "{76CCAAD9-921
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Client", "Client", "{B492D208-3D5D-4CEE-9AF8-B2453710FF12}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Watchflix.Api.Movies", "src\Api\Watchflix.Api.Movies\Watchflix.Api.Movies.csproj", "{3F9E9AB5-83ED-45BC-8056-14911295FE73}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Watchflix.Api.Movies", "src\Api\Watchflix.Api.Movies\Watchflix.Api.Movies.csproj", "{3F9E9AB5-83ED-45BC-8056-14911295FE73}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Watchflix.Api.Payment", "src\Api\Watchflix.Api.Payment\Watchflix.Api.Payment.csproj", "{A6B784EE-0CF2-4645-BAAF-A7CCBE2C4C6B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Watchflix.Api.Payment", "src\Api\Watchflix.Api.Payment\Watchflix.Api.Payment.csproj", "{A6B784EE-0CF2-4645-BAAF-A7CCBE2C4C6B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Watchflix.Api.Comment", "src\Api\Watchflix.Api.Comment\Watchflix.Api.Comment.csproj", "{A8AE0B99-3D1B-4999-9C49-1B1CF017D6B7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Watchflix.Api.Comment", "src\Api\Watchflix.Api.Comment\Watchflix.Api.Comment.csproj", "{A8AE0B99-3D1B-4999-9C49-1B1CF017D6B7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Watchflix.Api.Order", "src\Api\Watchflix.Api.Order\Watchflix.Api.Order.csproj", "{FE81B434-06B8-427A-9330-3B851FC93468}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Watchflix.Api.Order", "src\Api\Watchflix.Api.Order\Watchflix.Api.Order.csproj", "{FE81B434-06B8-427A-9330-3B851FC93468}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{B577FE6F-A2F6-4547-92DA-15BBA1E225BB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Watchflix.Shared", "src\Shared\Watchflix.Shared\Watchflix.Shared.csproj", "{F66A303A-19DC-42F6-BD20-E5E86DFB939A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Watchflix.Shared", "src\Shared\Watchflix.Shared\Watchflix.Shared.csproj", "{F66A303A-19DC-42F6-BD20-E5E86DFB939A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Watchflix.Api.MediaPlayer", "src\Api\Watchflix.Api.MediaPlayer\Watchflix.Api.MediaPlayer.csproj", "{2D421DBA-1E47-454B-829A-26C3DD0459DB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Watchflix.Api.MediaPlayer", "src\Api\Watchflix.Api.MediaPlayer\Watchflix.Api.MediaPlayer.csproj", "{2D421DBA-1E47-454B-829A-26C3DD0459DB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Watchflix.Client.WebMVC", "src\Client\Watchflix.Client.WebMVC\Watchflix.Client.WebMVC.csproj", "{49277CB4-55CB-460B-967F-0BD295643BEA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Watchflix.Client.MVC", "src\Client\Watchflix.Client.MVC\Watchflix.Client.MVC.csproj", "{6B1FD89D-E3D4-43B8-9664-22C8A71AF1D2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Watchflix.Api.Gateway", "src\Api\Watchflix.Api.Gateway\Watchflix.Api.Gateway.csproj", "{02623EC0-535F-4CE4-ABCE-E31CDC469BD8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Watchflix.Api.Identity", "src\Api\Watchflix.Api.Identity\Watchflix.Api.Identity.csproj", "{C2B02898-9A7C-42B3-B1EB-1FE85B4C23DB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -55,10 +59,18 @@ Global
 		{2D421DBA-1E47-454B-829A-26C3DD0459DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2D421DBA-1E47-454B-829A-26C3DD0459DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2D421DBA-1E47-454B-829A-26C3DD0459DB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{49277CB4-55CB-460B-967F-0BD295643BEA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{49277CB4-55CB-460B-967F-0BD295643BEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{49277CB4-55CB-460B-967F-0BD295643BEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{49277CB4-55CB-460B-967F-0BD295643BEA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B1FD89D-E3D4-43B8-9664-22C8A71AF1D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B1FD89D-E3D4-43B8-9664-22C8A71AF1D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B1FD89D-E3D4-43B8-9664-22C8A71AF1D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B1FD89D-E3D4-43B8-9664-22C8A71AF1D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{02623EC0-535F-4CE4-ABCE-E31CDC469BD8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02623EC0-535F-4CE4-ABCE-E31CDC469BD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02623EC0-535F-4CE4-ABCE-E31CDC469BD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02623EC0-535F-4CE4-ABCE-E31CDC469BD8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C2B02898-9A7C-42B3-B1EB-1FE85B4C23DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2B02898-9A7C-42B3-B1EB-1FE85B4C23DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2B02898-9A7C-42B3-B1EB-1FE85B4C23DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2B02898-9A7C-42B3-B1EB-1FE85B4C23DB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -73,7 +85,9 @@ Global
 		{B577FE6F-A2F6-4547-92DA-15BBA1E225BB} = {C05CC726-8F95-47F8-BEAC-FD5D26C5CF13}
 		{F66A303A-19DC-42F6-BD20-E5E86DFB939A} = {B577FE6F-A2F6-4547-92DA-15BBA1E225BB}
 		{2D421DBA-1E47-454B-829A-26C3DD0459DB} = {76CCAAD9-921C-4BC5-895E-26C753E75FEA}
-		{49277CB4-55CB-460B-967F-0BD295643BEA} = {B492D208-3D5D-4CEE-9AF8-B2453710FF12}
+		{6B1FD89D-E3D4-43B8-9664-22C8A71AF1D2} = {B492D208-3D5D-4CEE-9AF8-B2453710FF12}
+		{02623EC0-535F-4CE4-ABCE-E31CDC469BD8} = {76CCAAD9-921C-4BC5-895E-26C753E75FEA}
+		{C2B02898-9A7C-42B3-B1EB-1FE85B4C23DB} = {76CCAAD9-921C-4BC5-895E-26C753E75FEA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A46DCE9E-9FF1-49AC-86ED-D6E6BCCEB682}
