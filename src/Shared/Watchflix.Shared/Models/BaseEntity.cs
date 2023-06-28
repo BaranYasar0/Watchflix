@@ -11,5 +11,15 @@ namespace Watchflix.Shared.Models
         public Guid Id { get; set; }
         public DateTime CreatedDate { get; set; }
         public DateTime? UpdatedDate { get; set; }
+
+        public BaseEntity()
+        {
+            
+        }
+
+        public BaseEntity(Guid id):this()
+        {
+            Id=id;
+        }
     }
 }
