@@ -34,7 +34,11 @@ namespace Watchflix.Api.Identity.Controllers
 
         }
 
-
+        [HttpPost("Login")]
+        public async Task<IActionResult> Login([FromBody] LoginCommand command)
+        {
+            return Ok(await _mediator.Send(command));
+        }
 
 
 

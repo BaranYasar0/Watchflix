@@ -1,10 +1,12 @@
 ﻿using System.Reflection;
 using FluentValidation;
+using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Watchflix.Api.Movies.EntityFramework;
 using Watchflix.Api.Movies.Features.Rules.MovieRules;
 using Watchflix.Api.Movies.Services;
 using Watchflix.Api.Movies.Services.Interfaces;
+using Watchflix.Shared.Pipelines;
 
 namespace Watchflix.Api.Movies.Extensions
 {
@@ -29,6 +31,8 @@ namespace Watchflix.Api.Movies.Extensions
 
             services.AddScoped<MovieBusinessRules>();
             services.AddScoped<IMovieService, MovieService>();
+
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(AuthorizationBehavior<,>));
 
             return services;
         }

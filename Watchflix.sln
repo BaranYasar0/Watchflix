@@ -25,9 +25,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Watchflix.Api.MediaPlayer",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Watchflix.Client.MVC", "src\Client\Watchflix.Client.MVC\Watchflix.Client.MVC.csproj", "{6B1FD89D-E3D4-43B8-9664-22C8A71AF1D2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Watchflix.Api.Gateway", "src\Api\Watchflix.Api.Gateway\Watchflix.Api.Gateway.csproj", "{02623EC0-535F-4CE4-ABCE-E31CDC469BD8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Watchflix.Api.Gateway", "src\Api\Watchflix.Api.Gateway\Watchflix.Api.Gateway.csproj", "{02623EC0-535F-4CE4-ABCE-E31CDC469BD8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Watchflix.Api.Identity", "src\Api\Watchflix.Api.Identity\Watchflix.Api.Identity.csproj", "{C2B02898-9A7C-42B3-B1EB-1FE85B4C23DB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Watchflix.Api.Identity", "src\Api\Watchflix.Api.Identity\Watchflix.Api.Identity.csproj", "{C2B02898-9A7C-42B3-B1EB-1FE85B4C23DB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StateMachineWorkerService", "src\Api\StateMachineWorkerService\StateMachineWorkerService.csproj", "{8172E202-579F-46DB-93C5-D076EB480679}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{7F4E6545-31B3-4AC5-97DF-E19334A58291}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Gateways", "Gateways", "{DF3616A9-CDC7-437B-A55D-2493B4BE46F8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NewFolder1", "NewFolder1", "{677A4FEB-9933-4AE6-AA99-954B752803B1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -71,6 +79,10 @@ Global
 		{C2B02898-9A7C-42B3-B1EB-1FE85B4C23DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C2B02898-9A7C-42B3-B1EB-1FE85B4C23DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C2B02898-9A7C-42B3-B1EB-1FE85B4C23DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8172E202-579F-46DB-93C5-D076EB480679}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8172E202-579F-46DB-93C5-D076EB480679}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8172E202-579F-46DB-93C5-D076EB480679}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8172E202-579F-46DB-93C5-D076EB480679}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -88,6 +100,10 @@ Global
 		{6B1FD89D-E3D4-43B8-9664-22C8A71AF1D2} = {B492D208-3D5D-4CEE-9AF8-B2453710FF12}
 		{02623EC0-535F-4CE4-ABCE-E31CDC469BD8} = {76CCAAD9-921C-4BC5-895E-26C753E75FEA}
 		{C2B02898-9A7C-42B3-B1EB-1FE85B4C23DB} = {76CCAAD9-921C-4BC5-895E-26C753E75FEA}
+		{8172E202-579F-46DB-93C5-D076EB480679} = {76CCAAD9-921C-4BC5-895E-26C753E75FEA}
+		{7F4E6545-31B3-4AC5-97DF-E19334A58291} = {76CCAAD9-921C-4BC5-895E-26C753E75FEA}
+		{DF3616A9-CDC7-437B-A55D-2493B4BE46F8} = {76CCAAD9-921C-4BC5-895E-26C753E75FEA}
+		{677A4FEB-9933-4AE6-AA99-954B752803B1} = {76CCAAD9-921C-4BC5-895E-26C753E75FEA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A46DCE9E-9FF1-49AC-86ED-D6E6BCCEB682}
