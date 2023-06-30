@@ -21,14 +21,16 @@ namespace Watchflix.Api.Identity.Application.Features.Commands
             private readonly IHttpContextAccessor _contextAccessor;
             private readonly IAuthService _authService;
             private readonly IPublishEndpoint _publishEndpoint;
+            private readonly ILogger<LoginCommandHandler> _logger;
 
 
-            public LoginCommandHandler(AppDbContext context, IHttpContextAccessor contextAccessor, ITokenHelper tokenHelper, IAuthService authService, IPublishEndpoint publishEndpoint)
+            public LoginCommandHandler(AppDbContext context, IHttpContextAccessor contextAccessor, ITokenHelper tokenHelper, IAuthService authService, IPublishEndpoint publishEndpoint, ILogger<LoginCommandHandler> logger)
             {
                 _context = context;
                 _contextAccessor = contextAccessor;
                 _authService = authService;
                 _publishEndpoint = publishEndpoint;
+                _logger = logger;
             }
 
             public async Task<RegisterResponseDto> Handle(LoginCommand request, CancellationToken cancellationToken)
@@ -49,6 +51,9 @@ namespace Watchflix.Api.Identity.Application.Features.Commands
                     AccessTokenMessage = new AccessTokenMessage()
                         { Token = accessToken.Token, Expiration = accessToken.Expiration }
                 });
+
+                _logger.LogInformation($"Giriş yapıldı ve token olusturuldu.{accessToken.Token}");
+
                 return new RegisterResponseDto
                 {
                     Email = user.Email,
