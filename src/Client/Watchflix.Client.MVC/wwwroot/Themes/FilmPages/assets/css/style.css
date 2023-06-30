@@ -2,11 +2,6 @@
  * #style.css
 \*-----------------------------------*/
 
-/**
- * copyright 2022 @codewithsadee
- */
-
-
 
 
 
@@ -81,9 +76,11 @@
 \*-----------------------------------*/
 
 *, *::before, *::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 li { list-style: none; }
@@ -97,11 +94,17 @@ input,
 button,
 ion-icon { display: block; }
 
-input {
-  font: inherit;
-  width: 100%;
-  border: none;
+#top {
+    background-color: blue;
+    color: red;
 }
+
+
+    input {
+        font: inherit;
+        width: 100%;
+        border: none;
+    }
 
 select,
 button {
@@ -399,6 +402,7 @@ body.active { overflow: hidden; }
   display: flex;
   justify-content: space-between;
   align-items: center;
+
 }
 
 .header-actions { display: none; }
