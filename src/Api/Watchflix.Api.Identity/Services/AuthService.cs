@@ -1,8 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using MassTransit;
+using Microsoft.EntityFrameworkCore;
+using System.Net.Http;
 using Watchflix.Api.Identity.Application.Helpers.JWT;
 using Watchflix.Api.Identity.Application.Models.Entities;
 using Watchflix.Api.Identity.EntityFramework;
 using Watchflix.Api.Identity.Services.Interfaces;
+using Watchflix.Client.MVC.Models.Inputs;
 
 namespace Watchflix.Api.Identity.Services
 {
@@ -11,10 +14,17 @@ namespace Watchflix.Api.Identity.Services
 
         private readonly ITokenHelper _tokenHelper;
         private readonly AppDbContext _context;
-        public AuthService(ITokenHelper tokenHelper, AppDbContext context)
+        private readonly ILogger<AuthService> _logger;
+        private readonly HttpClient _httpClient;
+        private readonly IHttpContextAccessor _contextAccessor;
+
+        public AuthService(ITokenHelper tokenHelper, AppDbContext context, ILogger<AuthService> logger, HttpClient httpClient, IHttpContextAccessor contextAccessor)
         {
             _tokenHelper = tokenHelper;
             _context = context;
+            _logger = logger;
+            _httpClient = httpClient;
+            _contextAccessor = contextAccessor;
         }
 
         public async Task<AccessToken> CreateAccessToken(User user)
@@ -43,5 +53,7 @@ namespace Watchflix.Api.Identity.Services
             
             return addedToken.Entity;
         }
+
+       
     }
 }

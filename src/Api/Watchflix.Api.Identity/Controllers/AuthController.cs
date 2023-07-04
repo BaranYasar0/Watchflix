@@ -1,7 +1,9 @@
-﻿using MediatR;
+﻿using System.Security.Claims;
+using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Watchflix.Api.Identity.Application.Features.Commands;
+using Watchflix.Api.Identity.Application.Helpers.JWT;
 using Watchflix.Api.Identity.Application.Models.Dtos;
 using Watchflix.Api.Identity.Application.Models.Entities;
 
@@ -28,16 +30,25 @@ namespace Watchflix.Api.Identity.Controllers
             };
 
             RegisterResponseDto result = await _mediator.Send(registerCommand);
-            SetRefreshTokenToCookie(result.RefreshToken);
+            SetAccessTokenToCookie(result.AccessToken);
             return Created("", result.AccessToken);
 
 
         }
 
         [HttpPost("Login")]
-        public async Task<IActionResult> Login([FromBody] LoginCommand command)
+        public async Task<IActionResult> Login([FromBody]LoginCommand command)
         {
-            return Ok(await _mediator.Send(command));
+            var result= await _mediator.Send(command);
+            SetAccessTokenToCookie(result.AccessToken);
+            CookieOptions cookieOptions = new()
+            {
+                Expires = DateTime.Now
+                    .AddDays(7),
+                Secure = true,
+            };
+            Response.Cookies.Append("accessToken", result.AccessToken.Token, cookieOptions);
+            return Ok(result);
         }
 
 
@@ -45,10 +56,15 @@ namespace Watchflix.Api.Identity.Controllers
 
 
 
-        private void SetRefreshTokenToCookie(RefreshToken refreshToken)
+        private void SetAccessTokenToCookie(AccessToken accessToken)
         {
-            CookieOptions cookieOptions = new() { HttpOnly = true, Expires = DateTime.Now.AddDays(7) };
-            Response.Cookies.Append("refreshToken", refreshToken.Token, cookieOptions);
+            CookieOptions cookieOptions = new()
+            {
+                Expires =DateTime.Now
+                    .AddDays(7),
+                SameSite = SameSiteMode.None
+            };
+            Response.Cookies.Append("accessToken", accessToken.Token, cookieOptions);
         }
 
         protected string? GetIpAddress()

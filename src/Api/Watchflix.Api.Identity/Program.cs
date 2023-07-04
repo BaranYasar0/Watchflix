@@ -1,5 +1,8 @@
 using MassTransit;
+using MassTransit.Configuration;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.CookiePolicy;
+using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Watchflix.Api.Identity.Application.Helpers.Encryption;
@@ -19,6 +22,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddIdentityServices(builder.Configuration);
 
 builder.Services.AddHttpContextAccessor();
+builder.Services.AddHttpClient();
 
 builder.Services.AddMassTransit(x =>
 {
@@ -32,7 +36,22 @@ builder.Services.AddMassTransit(x =>
 
 TokenOptions? tokenOptions = builder.Configuration.GetSection("TokenOptions").Get<TokenOptions>();
 
-builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(x =>
+builder.Services.AddCors(x =>
+{
+    x.AddDefaultPolicy(y =>
+    {
+        y.WithOrigins("https://localhost:5040");
+        y.AllowAnyHeader();
+        y.AllowAnyMethod();
+    });
+});
+
+builder.Services.AddCookiePolicy(x =>
+{
+    x.HttpOnly = HttpOnlyPolicy.Always;
+});
+
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddCookie(cfg => cfg.SlidingExpiration = true).AddJwtBearer(x =>
 {
     x.TokenValidationParameters = new TokenValidationParameters()
     {
@@ -44,6 +63,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
         ValidateIssuerSigningKey = true,
         IssuerSigningKey = SecurityKeyHelper.CreateSecurityKey(tokenOptions.SecurityKey)
     };
+
 });
 
 builder.Services.AddSwaggerGen(opt =>
@@ -77,6 +97,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseCors();
 app.UseHttpsRedirection();
 
 app.UseAuthentication();

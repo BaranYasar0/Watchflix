@@ -34,6 +34,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Client\Watchflix.Client.MVC\Watchflix.Client.MVC.csproj" />
     <ProjectReference Include="..\..\Shared\Watchflix.Shared\Watchflix.Shared.csproj" />
   </ItemGroup>
 

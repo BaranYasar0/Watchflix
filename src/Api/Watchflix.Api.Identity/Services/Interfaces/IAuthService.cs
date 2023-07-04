@@ -1,5 +1,6 @@
 ﻿using Watchflix.Api.Identity.Application.Helpers.JWT;
 using Watchflix.Api.Identity.Application.Models.Entities;
+using Watchflix.Client.MVC.Models.Inputs;
 
 namespace Watchflix.Api.Identity.Services.Interfaces
 {

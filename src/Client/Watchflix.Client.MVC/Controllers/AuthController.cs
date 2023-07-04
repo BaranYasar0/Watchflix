@@ -1,38 +1,55 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.IdentityModel.Tokens.Jwt;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
+using NuGet.Common;
+using System.Text;
+using Microsoft.IdentityModel.Tokens;
 using Watchflix.Client.MVC.Models.Inputs;
+using Watchflix.Client.MVC.Services.Interfaces;
+using System.Reflection;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Options;
 
 namespace Watchflix.Client.MVC.Controllers
 {
     public class AuthController : Controller
     {
-        private readonly HttpClient _httpClient;
+        private readonly IAuthService _authService;
+        private readonly Shared.Models.TokenOptions _tokenOptions;
 
-        public AuthController(HttpClient httpClient)
+        public AuthController(IAuthService authService, IOptions<Shared.Models.TokenOptions> tokenOptions)
         {
-            _httpClient = httpClient;
+            _authService = authService;
+            _tokenOptions = tokenOptions.Value;
         }
 
-        public IActionResult Index()
-        {
-            return View();
-        }
 
         [HttpGet]
-        public IActionResult Login()
+        public async Task<IActionResult> Login()
         {
             return View();
         }
-        
+
         [HttpPost]
         public async Task<IActionResult> Login(LoginInputModel input)
         {
-            var result=await _httpClient.PostAsJsonAsync("https://localhost:5001/api/auth/login", input);
-            if(result.IsSuccessStatusCode)
+
+            if (await _authService.LoginAndAddTokenToCookie(input))
                 return RedirectToAction("Index", "Home");
 
-            
             return View();
+
         }
 
+        [HttpGet]
+        public async Task<IActionResult> LogOut()
+        {
+            await _authService.DeleteCookies();
+            await HttpContext.SignOutAsync();
+            return RedirectToAction("Index", "Home");
+        }
     }
 }

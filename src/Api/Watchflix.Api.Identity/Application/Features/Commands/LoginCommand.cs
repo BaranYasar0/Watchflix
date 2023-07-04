@@ -57,7 +57,7 @@ namespace Watchflix.Api.Identity.Application.Features.Commands
                 return new RegisterResponseDto
                 {
                     Email = user.Email,
-                    AccessToken = accessToken
+                    AccessToken = accessToken,
                 };
             }
         }
