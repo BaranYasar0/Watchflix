@@ -24,7 +24,7 @@ namespace Watchflix.Api.Movies.Features.Queries.GetById
 
             public async Task<CategoryCreateDto> Handle(GetCategoryByIdQuery request, CancellationToken cancellationToken)
             {
-                Category category = await _context.Categories
+                Category category = await _context.Categories.Include(y=>y.Movies)
                     .FirstOrDefaultAsync(x => x.Id == request.Id);
                 if (category == null)
                 {

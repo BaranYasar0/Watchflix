@@ -1,0 +1,36 @@
+﻿@model List<Watchflix.Client.MVC.Models.ViewModels.GetCategoryViewModel>
+
+<link rel="stylesheet" href="/css/category.css">
+<body>
+    <br />
+    <br />
+    <h2>Categories</h2>
+
+    <div class="background-container">
+
+        @if (Model is not null && Model.Count > 0)
+        {
+            @foreach (var item in Model)
+            {
+                <a href="/Movie/MoviesByCategory/@item.Id">
+                    @{
+                        ViewBag.v1 = item.Name;
+                    }
+                    <div class="background-image">
+
+                        <h1>@item.Name</h1>
+
+                    </div>
+                </a>
+            }
+
+        }
+        else
+        {
+            <h1>Kategori Bulunamadı.</h1>
+        }
+
+    </div>
+
+</body>
+

@@ -7,6 +7,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="configuration.development.json" />
+    <Content Remove="configuration.production.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="configuration.production.json" />
+    <None Include="configuration.development.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Ocelot" Version="18.0.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
   </ItemGroup>
 

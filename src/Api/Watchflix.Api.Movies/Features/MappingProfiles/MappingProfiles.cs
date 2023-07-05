@@ -10,11 +10,11 @@ namespace Watchflix.Api.Movies.Features.MappingProfiles
     {
         public MappingProfiles()
         {
-            CreateMap<CategoryCreateDto, Category>().ReverseMap();
+            CreateMap<CategoryCreateDto, Category>().ForMember(x=>x.Movies,y=>y.MapFrom(x=>x.MovieQueryDtos)).ReverseMap();
 
             CreateMap<CreateMovieDto, Movie>().ReverseMap();
 
-
+            CreateMap<GetMoviesByCategoryDto, Movie>().ReverseMap();
             CreateMap<CreateMovieResponseDto, Movie>()
                 .ForMember(x => x.Category, y => y.MapFrom(z => z.CategoryResponseDtos)).ReverseMap();
             CreateMap<CategoryWithMovieDto, Movie>().ReverseMap();

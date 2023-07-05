@@ -1,0 +1,114 @@
+﻿@using System.Security.Cryptography
+@model Watchflix.Client.MVC.Models.ViewModels.GetMovieViewModel
+
+
+<main>
+    <article>
+
+        <!--
+          - #MOVIE DETAIL
+        -->
+        
+
+        <section class="movie-detail" >
+
+            <div class="container">
+
+                <figure class="movie-detail-banner">
+
+                    <img src="@Model.PictureUrl" alt="@Model.Name movie poster">
+
+                    <button class="play-btn">
+                        <ion-icon name="play-circle-outline"></ion-icon>
+                    </button>
+
+                </figure>
+
+                <div class="movie-detail-content">
+
+
+                    <h1 class="h1 detail-title">
+                        <strong> @Model.Name</strong>
+                    </h1>
+
+                    <div class="meta-wrapper">
+
+                        <div class="badge-wrapper">
+                            <div class="badge badge-fill">PG 13</div>
+
+                            <div class="badge badge-outline">HD</div>
+                        </div>
+
+                        <div class="ganre-wrapper">
+                            <a href="#">@Model.CategoryResponseDto?.Name</a>
+
+
+                        </div>
+
+                        <div class="date-time">
+
+                            <div>
+                                <ion-icon name="calendar-outline"></ion-icon>
+
+                                <time datetime="2021">@RandomNumberGenerator.GetInt32(2018, 2023)</time>
+                            </div>
+
+                            <div>
+                                <ion-icon name="time-outline"></ion-icon>
+
+                                <time datetime="PT115M">@Model.Duration.ToString().Split(",")[0] min</time>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <p class="storyline">
+                        @Model.Description
+                    </p>
+
+                    <div class="details-actions">
+
+                        <button class="share">
+                            <ion-icon name="share-social"></ion-icon>
+
+                            <span>Share</span>
+                        </button>
+
+                        <div class="title-wrapper">
+                            <p class="title">Prime Video</p>
+
+                            <p class="text">Streaming Channels</p>
+                        </div>
+
+                        <button class="btn btn-primary">
+                            <ion-icon name="play"></ion-icon>
+
+                            <span>Watch Now</span>
+                        </button>
+
+                    </div>
+
+                    <a href="./assets/images/movie-4.png" download class="download-btn">
+                        <span>Download</span>
+
+                        <ion-icon name="download-outline"></ion-icon>
+                    </a>
+
+                </div>
+
+            </div>
+        </section>
+
+
+        @await Component.InvokeAsync("RelatedCategoryMoviesList",new{categoryId=Model.CategoryResponseDto.Id,movieId=Model.Id})
+
+        <!--
+          - #TV SERIES
+        -->
+        @await Component.InvokeAsync("TopRatedMoviesList")
+
+    </article>
+</main>
+
+

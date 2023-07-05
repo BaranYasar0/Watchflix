@@ -1,0 +1,107 @@
+﻿@using System.Security.Cryptography
+@model List<Watchflix.Client.MVC.Models.ViewModels.GetMoviesForCategoryViewModel>
+
+
+<section class="top-rated">
+    <div class="container">
+
+        <p class="section-subtitle">Online Streaming</p>
+
+        <h2 class="h2 section-title">Movies for @ViewBag.v1 </h2>
+
+        <ul class="filter-list">
+
+            <li>
+                <button class="filter-btn">Movies</button>
+            </li>
+
+            <li>
+                <button class="filter-btn">TV Shows</button>
+            </li>
+
+            <li>
+                <button class="filter-btn">Documentary</button>
+            </li>
+
+            <li>
+                <button class="filter-btn">Sports</button>
+            </li>
+
+        </ul>
+
+        <ul class="movies-list">
+
+            @if (Model is not null || Model.Count > 0)
+            {
+
+                @foreach (var item in Model)
+                {
+
+                    <li>
+                        <div class="movie-card">
+                            @if (item.PictureUrl is null)
+                            {
+
+                                <a href="/Movie/MovieById/@item.Id">
+                                    <figure class="card-banner">
+                                        <img src="/FilmPages/assets/images/movie-1.png" alt="Sonic the Hedgehog 2 movie poster">
+                                    </figure>
+                                </a>
+                            }
+
+                            else
+                            {
+                                <a href="/Movie/MovieById/@item.Id">
+                                    <figure class="card-banner">
+                                        <img src="@item.PictureUrl" alt="Sonic the Hedgehog 2 movie poster">
+                                    </figure>
+                                </a>
+
+
+                            }
+                            <div class="title-wrapper">
+                                <a href="/Movie/MovieById/@item.Id">
+                                    <h3 class="card-title">@item.Name</h3>
+                                </a>
+
+                                <time datetime="2022">@RandomNumberGenerator.GetInt32(2018,2023)</time>
+                            </div>
+
+                            <div class="card-meta">
+                                <div class="badge badge-outline">2K</div>
+
+                                <div class="">
+                                </div>
+
+                                <div class="duration">
+                                    <ion-icon name="time-outline"></ion-icon>
+
+                                    <time datetime="PT122M">@item.CorrectDuration min</time>
+                                </div>
+
+                                <div class="rating">
+                                    <ion-icon name="star"></ion-icon>
+
+                                    <data>@item.Rating</data>
+                                </div>
+                            </div>
+
+                        </div>
+                    </li>
+                }
+
+            }
+
+            else
+            {
+                <div class="movie-card">
+                    <p>Film bulunamadı.</p>
+                </div>
+            }
+
+        </ul>
+
+    </div>
+</section>
+
+

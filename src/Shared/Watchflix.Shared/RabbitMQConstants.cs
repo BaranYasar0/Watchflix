@@ -9,5 +9,6 @@ namespace Watchflix.Shared
     public static class RabbitMQConstants
     {
         public const string LoginCompletedQueueName = "login-completed-queue-name";
+        public const string PhotoStockedQueueName = "photo-stocked-queue-name";
     }
 }

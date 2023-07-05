@@ -16,17 +16,32 @@ namespace Watchflix.Client.MVC.Services
             _contextAccessor = contextAccessor;
         }
 
-        public async Task<List<GetMovieViewModel>> GetAllMovies()
+        public async Task<List<GetMovieViewModel>> GetAllMovies(int index = 0,int size=10)
         {
 
-            var response = await _httpClient.GetFromJsonAsync<List<GetMovieViewModel>>("https://localhost:5032/api/Movies/?PageNumber=0&PageSize=10");
+            var response =
+                await _httpClient.GetFromJsonAsync<List<GetMovieViewModel>>(
+                    $"  ?Index={index}&Size={size}");
             if (response is not null)
             {
-                _logger.LogInformation($"Filmler apiden çekildi.");
+                _logger.LogInformation($"{response.Count} adet film apiden çekildi.");
                 return response;
             }
 
             return new List<GetMovieViewModel>();
+        }
+
+        
+        public async Task<GetMovieViewModel> GetMovieById(Guid movieId)
+        {
+            var response = await _httpClient.GetFromJsonAsync<GetMovieViewModel>($"{movieId}");
+            if (response is not null)
+            {
+                _logger.LogInformation($"{response.Name} filmi apiden çekildi");
+                return response;
+            }
+
+            return null;
         }
     }
 }

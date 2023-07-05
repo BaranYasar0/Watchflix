@@ -26,10 +26,25 @@ builder.Services.AddTransient<TokenAuthenticationHandler>();
 
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IMovieService, MovieService>();
+builder.Services.AddScoped<ICategoryService, CategoryService>();
 
-builder.Services.AddHttpClient<IAuthService, AuthService>();
-builder.Services.AddHttpClient<IMovieService, MovieService>().AddHttpMessageHandler<TokenAuthenticationHandler>();
+builder.Services.AddHttpClient<IAuthService, AuthService>(x =>
+{
+    x.BaseAddress = new Uri("https://localhost:5000/identity/");
+});
+
+builder.Services.AddHttpClient<IMovieService, MovieService>(x =>
+{
+    x.BaseAddress = new Uri("https://localhost:5000/services/catalog/movies/");
+}).AddHttpMessageHandler<TokenAuthenticationHandler>();
+
+builder.Services.AddHttpClient<ICategoryService, CategoryService>(x =>
+{
+    x.BaseAddress = new Uri("https://localhost:5000/services/catalog/categories/");
+}).AddHttpMessageHandler<TokenAuthenticationHandler>();
+
 builder.Services.AddMvc();
+
 //builder.Services.AddHttpClient();
 
 
@@ -81,12 +96,12 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 
-app.Use(async (context, next) =>
-{
-    await next();
-    if(context.Response.StatusCode==(int)HttpStatusCode.Unauthorized)
-        context.Response.Redirect("/Auth/Login");
-});
+//app.Use(async (context, next) =>
+//{
+//    await next();
+//    if(context.Response.StatusCode==(int)HttpStatusCode.Unauthorized)
+//        context.Response.Redirect("/Auth/Login");
+//});
 
 app.UseAuthentication();
 

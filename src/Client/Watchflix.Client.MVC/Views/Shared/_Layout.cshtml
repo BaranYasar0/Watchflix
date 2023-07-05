@@ -35,10 +35,10 @@
 
             <div class="overlay" data-overlay></div>
 
-            <a href="/Home/Index" class="logo" >
+            <a href="/Home/Index" class="logo">
                 @*<img src="/FilmPages/assets/images/logo.svg" alt="Filmlane logo">*@
                 <div style="display:flex;align-items:center;">
-                    <img src="/FilmPages/favicon.svg"/>
+                    <img src="/FilmPages/favicon.svg" />
                     <p style="padding-left:5px;font-size:30px;color:white;font-family: 'Arial Black', sans-serif; letter-spacing: 2px;">Watchflix</p>
                 </div>
             </a>
@@ -75,7 +75,7 @@
 
                     </a>
                 }
-                
+
 
             </div>
 
@@ -109,6 +109,10 @@
 
                     <li>
                         <a href="#" class="navbar-link">Tv Show</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/Category/GetAllCategories" class="navbar-link">Categories</a>
                     </li>
 
                     <li>
@@ -163,10 +167,6 @@
     <br />
     <br />
     <br />
-    <br />
-    <br />
-    <br />
-    <br />
 
     <div>
         @RenderBody()
@@ -174,130 +174,13 @@
     </div>
 
 
+@await Component.InvokeAsync("FooterComponent")
 
 
-
-    <div class="footer">
-
-        <div class="footer-top">
-            <div class="container">
-
-                <div class="footer-brand-wrapper">
-
-                    <a href="./index.html" class="logo">
-                        <img src="/FilmPages/assets/images/logo.svg" alt="Filmlane logo">
-                    </a>
-
-                    <ul class="footer-list">
-
-                        <li>
-                            <a href="./index.html" class="footer-link">Home</a>
-                        </li>
-
-                        <li>
-                            <a href="#" class="footer-link">Movie</a>
-                        </li>
-
-                        <li>
-                            <a href="#" class="footer-link">TV Show</a>
-                        </li>
-
-                        <li>
-                            <a href="#" class="footer-link">Web Series</a>
-                        </li>
-
-                        <li>
-                            <a href="#" class="footer-link">Pricing</a>
-                        </li>
-
-                    </ul>
-
-                </div>
-
-                <div class="divider"></div>
-
-                <div class="quicklink-wrapper">
-
-                    <ul class="quicklink-list">
-
-                        <li>
-                            <a href="#" class="quicklink-link">Faq</a>
-                        </li>
-
-                        <li>
-                            <a href="#" class="quicklink-link">Help center</a>
-                        </li>
-
-                        <li>
-                            <a href="#" class="quicklink-link">Terms of use</a>
-                        </li>
-
-                        <li>
-                            <a href="#" class="quicklink-link">Privacy</a>
-                        </li>
-
-                    </ul>
-
-                    <ul class="social-list">
-
-                        <li>
-                            <a href="#" class="social-link">
-                                <ion-icon name="logo-facebook"></ion-icon>
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="#" class="social-link">
-                                <ion-icon name="logo-twitter"></ion-icon>
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="#" class="social-link">
-                                <ion-icon name="logo-pinterest"></ion-icon>
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="#" class="social-link">
-                                <ion-icon name="logo-linkedin"></ion-icon>
-                            </a>
-                        </li>
-
-                    </ul>
-
-                </div>
-
-            </div>
-        </div>
-
-        <div class="footer-bottom">
-            <div class="container">
-
-                <p class="copyright">
-                    &copy; 2022 <a href="#">codewithsadee</a>. All Rights Reserved
-                </p>
-
-                <img src="/FilmPages/assets/images/footer-bottom-img.png" alt="Online banking companies logo" class="footer-bottom-img">
-
-            </div>
-        </div>
-
-    </div>
-
-
-    <a href="#top" class="go-top" data-go-top>
-        <ion-icon name="chevron-up"></ion-icon>
-    </a>
-
-
-
-
-
-    <!--
+<!--
     - custom js link
     -->
-    <script src="//FilmPages/assets/js/script.js"></script>
+    <script src="/FilmPages/assets/js/script.js"></script>
 
     <!--
     - ionicon link

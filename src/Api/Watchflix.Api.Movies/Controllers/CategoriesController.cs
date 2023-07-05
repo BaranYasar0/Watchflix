@@ -28,6 +28,17 @@ namespace Watchflix.Api.Movies.Controllers
             return Ok(await Mediator.Send(query));
         }
 
+        [HttpGet("GetMoviesByCategory/{categoryId:guid}")]
+        public async Task<IActionResult> GetMoviesByCategory([FromRoute] Guid categoryId, [FromQuery] PageRequestDto pageRequestDto)
+        {
+            var query=new GetMoviesByCategoryQuery();
+            query.Id = categoryId;
+            query.PageRequestDto=pageRequestDto;
+            var result = await Mediator.Send(query);
+            return Ok(result);
+        }
+
+
         [HttpPost]
         public async Task<IActionResult> AddCategory(CreateCategoryCommand command)
         {

@@ -16,7 +16,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers().AddJsonOptions(x =>
 {
-    x.JsonSerializerOptions.ReferenceHandler=ReferenceHandler.IgnoreCycles;
+    x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
 });
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -26,18 +26,18 @@ builder.Services.AddRequiredServices(builder.Configuration);
 TokenOptions? tokenOptions = builder.Configuration.GetSection("TokenOptions").Get<TokenOptions>();
 
 builder.Services.AddHttpContextAccessor();
-builder.Services.AddHttpClient<LoginCompletedEventConsumer>();
 
 builder.Services.AddMassTransit(x =>
 {
-    x.AddConsumer<LoginCompletedEventConsumer>();
+    x.AddConsumer<PhotoStockedEventConsumer>();
+
     x.UsingRabbitMq((context, cfg) =>
     {
         cfg.Host(builder.Configuration.GetConnectionString("RabbitMQSettings"));
 
-        cfg.ReceiveEndpoint(RabbitMQConstants.LoginCompletedQueueName, e =>
+        cfg.ReceiveEndpoint(RabbitMQConstants.PhotoStockedQueueName, e =>
         {
-            e.ConfigureConsumer<LoginCompletedEventConsumer>(context);
+            e.ConfigureConsumer<PhotoStockedEventConsumer>(context);
         });
     });
 });

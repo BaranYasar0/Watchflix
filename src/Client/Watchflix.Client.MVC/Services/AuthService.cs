@@ -29,7 +29,7 @@ namespace Watchflix.Client.MVC.Services
 
         public async Task<bool> LoginAndAddTokenToCookie(LoginInputModel input)
         {
-            var result = await _httpClient.PostAsJsonAsync("https://localhost:5001/api/Auth/Login", input);
+            var result = await _httpClient.PostAsJsonAsync("Auth/Login", input);
             if (result.IsSuccessStatusCode)
             {
                 if (result.Headers.TryGetValues("Set-Cookie", out var cookieValues))
@@ -44,8 +44,6 @@ namespace Watchflix.Client.MVC.Services
                         {
                             accessToken = accessToken.Replace("accessToken=", string.Empty);
                             _logger.LogInformation(accessToken);
-
-                            List<Claim> claims = GetClaimsFromStringToken(accessToken);
 
                             var tokenHandler = new JwtSecurityTokenHandler();
                             var validationParameters = new TokenValidationParameters

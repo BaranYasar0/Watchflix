@@ -8,7 +8,7 @@ using Watchflix.Shared.Pipelines;
 
 namespace Watchflix.Api.Movies.Features.Queries.GetAll
 {
-    public class GetAllMoviesQuery : IRequest<List<MovieQueryDto>>,ISecuredRequest
+    public class GetAllMoviesQuery : IRequest<List<MovieQueryDto>>
     {
         public PageRequestDto PageRequestDto { get; set; }
         public string[] Roles => new[] { "Admin" };
