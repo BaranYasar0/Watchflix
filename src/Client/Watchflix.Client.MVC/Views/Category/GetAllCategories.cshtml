@@ -14,7 +14,7 @@
             {
                 <a href="/Movie/MoviesByCategory/@item.Id">
                     @{
-                        ViewBag.v1 = item.Name;
+                        TempData["Message"]  = item.Name;
                     }
                     <div class="background-image">
 

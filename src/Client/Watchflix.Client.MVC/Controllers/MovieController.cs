@@ -32,5 +32,7 @@ namespace Watchflix.Client.MVC.Controllers
            return View(await _categoryService.GetMoviesForCategoryAsync(categoryId, null));
         }
 
+        
+
     }
 }

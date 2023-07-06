@@ -8,7 +8,9 @@
         <!--
           - #MOVIE DETAIL
         -->
-        
+        @{
+            TempData["MovieName"] = Model.Name;
+        }
 
         <section class="movie-detail" >
 
@@ -17,10 +19,12 @@
                 <figure class="movie-detail-banner">
 
                     <img src="@Model.PictureUrl" alt="@Model.Name movie poster">
-
+                    <a href="/Movie/PlayMovie/@Model.Id">
+                        
                     <button class="play-btn">
                         <ion-icon name="play-circle-outline"></ion-icon>
                     </button>
+                    </a>
 
                 </figure>
 
